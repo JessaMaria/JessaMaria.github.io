@@ -1,0 +1,19 @@
+header {
+    font-family:Georgia, 'Times New Roman', Times, serif
+    width 600px; 
+    margin: 0 auto;  
+}
+body {
+    font-family: "Merriweather", serif;
+    width: 900px;
+    margin: 40px auto;
+}
+nav.box-navigation {
+    font-family: Arial, sans-serif;
+    font-size: 1.2em;
+    background-color: hsl(27, 94%, 63%);
+    padding: 10px; 
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
