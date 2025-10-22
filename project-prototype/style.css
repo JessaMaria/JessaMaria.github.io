@@ -17,3 +17,64 @@ nav.box-navigation {
     border-radius: 5px;
     text-align: center;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+/*
+ * Sets everyting to use `border-box` for calculating sizing.
+ * https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
+ */
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+
+html {
+    background-color: #f0f0f0;
+}
+
+body {
+    color: #202020;
+    font-family: Outfit, sans-serif;
+    max-width: 800px;
+    margin: 2em auto;
+}
+
+h1 {
+    font-weight: 100;
+}
+
+header h1 {
+    font-size: 1.25em;
+    font-weight: 500;
+    margin: 1em 1 em 5em;
+    background-image: url('images/wall.png');
+    background-position: 50% 50%;
+    background-size: 100%;
+    padding: 1em 1em 5em;
+}
+
+a:link {color: hwb(16 7% 9%);}
+a:visited {color: hwb(117 7% 9%);}
+a:hover,
+a:focus {color: hwb(16 7% 9%);}
+a:active {color: hwb(16 7% 9%);}
+
+nav {
+    border: 1px solid #cecece;
+    border-width: 1px 0;
+    padding: 0.5em 0;
+    margin: 0;
+    background: #f0f0f0;
+}
+
+nav a {
+    text-decoration:none;
+}
+
+main h1,
+main h2,
+main p {
+    margin: 1rem 0;
+}
