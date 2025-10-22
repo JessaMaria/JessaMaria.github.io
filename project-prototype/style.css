@@ -1,15 +1,5 @@
-header {
-    font-family:Georgia, 'Times New Roman', Times, serif
-    width 600px; 
-    margin: 0 auto;  
-}
-body {
-    font-family: "Merriweather", serif;
-    width: 900px;
-    margin: 40px auto;
-}
 nav.box-navigation {
-    font-family: Arial, sans-serif;
+    font-family: Georgia, 'Times New Roman', Times, serif; 
     font-size: 1.5em;
     background-color: hsl(27, 94%, 63%);
     padding: 10px; 
@@ -19,11 +9,15 @@ nav.box-navigation {
 }  
 li {
     text-decoration:none;
-    background-color: lab(48.03% -4.86 -39.85);
+    background-color: #8ad6ff;
     padding: 10px; 
     margin-bottom: 20px;
     border-radius: 5px;
     width: fit-content
+}
+li:hover,
+li:focus {
+    background-color: #cecece;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
@@ -44,25 +38,25 @@ html {
 
 body {
     color: #202020;
-    font-family: Outfit, sans-serif;
+    font-family: Outfit, Georgia, 'Times New Roman', Times, serif;
     max-width: 800px;
     margin: 2em auto;
 }
 
 h1 {
-    font-weight: 100;
+    font-weight: 500;
 }
 
 header h1 {
-    font-size: 1.5em;
+    font-size: 2.0em;
     font-weight: 800;
     text-align: right;
     vertical-align: bottom;
-    margin: 1em 1 em 5em;
+    margin: 1em 1 em 1em;
     background-image: url('images/wall.png');
     background-position: 50% 50%;
     background-size: 100%;
-    padding: 1em 1em 5em; 
+    padding: 1em 1em 1em; 
 }
 
 a:link {color: hwb(16 7% 9%);}
@@ -81,9 +75,6 @@ nav {
 
 nav a {
     text-decoration:none;
-    background-color: lab(48.03% -4.86 -39.85);
-    padding: 5px; 
-    border-radius: 5px;
 }
 
 nav a:hover,
