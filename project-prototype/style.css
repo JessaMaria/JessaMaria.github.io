@@ -46,8 +46,9 @@ h1 {
 }
 
 header h1 {
-    font-size: 1.25em;
-    font-weight: 500;
+    font-size: 1.5em;
+    font-weight: 800;
+    text-align: right;
     margin: 1em 1 em 5em;
     background-image: url('images/wall.png');
     background-position: 50% 50%;
