@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mapping Latiné Literature</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Add script to the <head> of your page to load the embeddable map component -->
+<script type="module" src="https://js.arcgis.com/4.34/embeddable-components/"></script>
 </head>
 <body>
     <header>
@@ -13,5 +15,9 @@
             <a href="index.html">Home</a> | <a href="textual.html">Textual Mapping</a> | <a href="about.html">About</a> | <a href="Bibliography.html">Bibliography</a>
         </nav>
     </header>
+    <main>
+        <!-- Add custom element to <body> of your page -->
+ <arcgis-embedded-map style="height:600px;width:800px;" item-id="60783e80bcd3480c9604c3874ccf9ff4" theme="light" center="-81.58743918180252,35.753400696043386"scale="73957190.948944" portal-url="https://uvalibrary.maps.arcgis.com"></arcgis-embedded-map>
+    </main>
 </body>
 </html>
