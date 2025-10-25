@@ -8,16 +8,23 @@ nav.box-navigation {
     border-radius: 5px;
     text-align: center;
 }  
-li {
-    text-decoration:none;
+/* Navigation list styling (scoped to .nav-list) */
+.nav-list {
+    list-style: none; /* remove bullets */
+    padding: 0;
+    margin: 0;
+}
+.nav-list li {
+    text-decoration: none;
     background-color: #8ad6ff;
-    padding: 7px; 
+    padding: 7px;
     margin-bottom: 20px;
     border-radius: 5px;
-    width: fit-content
+    width: fit-content;
+    margin-right: 0.5rem;
 }
-li:hover,
-li:focus {
+.nav-list li:hover,
+.nav-list li:focus {
     background-color: #cecece;
 }
 
@@ -87,4 +94,63 @@ main h1,
 main h2,
 main p {
     margin: 1rem 0;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+}
+
+.bib-title { font-style: italic; }
+/* Bibliography list: remove bullets and add spacing/visual separators */
+.bib-list {
+    list-style: none; /* no bullets */
+    padding: 0; /* remove default ul padding */
+    margin: 1rem 0;
+}
+.bib-list li {
+    padding: 0.65rem 0.6rem;
+    border-bottom: none;
+    margin-bottom: 0.4rem;
+}
+.bib-list li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+/* Controls for bibliography sorting */
+.bib-controls {
+    margin: 0.6rem 0 0.8rem 0;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.bib-controls label {
+    font-weight: 600;
+    margin-right: 0.25rem;
+}
+.bib-controls button {
+    background: #f7f7f7;
+    border: 1px solid #ddd;
+    padding: 0.35rem 0.55rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.bib-controls button:hover,
+.bib-controls button:focus {
+    background: #eef6ff;
+    outline: none;
+}
+/* Bibliography metadata classes */
+.bib-author {
+    margin-left: 0.4rem;
+    font-style: normal; /* author names not italic */
+    color: #1f1f1f;
+}
+.bib-year {
+    margin-left: 0.25rem;
+    color: #333;
 }

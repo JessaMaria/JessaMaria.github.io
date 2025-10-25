@@ -13,5 +13,73 @@
             <a href="index.html">Home</a> | <a href="textual.html">Textual Mapping</a> | <a href="about.html">About</a> | <a href="Bibliography.html">Bibliography</a>
         </nav>
     </header>
+     <h1>Bibliography</h1>
+    <div class="bib-controls" aria-hidden="false">
+        <label for="bib-sort">Sort bibliography:</label>
+        <button id="sort-author" type="button">Author A–Z</button>
+        <button id="sort-year-asc" type="button">Year ↑</button>
+        <button id="sort-year-desc" type="button">Year ↓</button>
+        <span id="bib-announcer" aria-live="polite" style="margin-left:.6rem;color:#333"></span>
+    </div>
+    <ul class="bib-list">
+    <li data-author="Ruiz de Burton, Maria Amparo" data-year="1885"><cite class="bib-title">The Squatter and the Don</cite><span class="bib-author"> — Ruiz de Burton, Maria Amparo</span><span class="bib-year">, 1885.</span></li>
+    <li data-author="Valdez, Luis" data-year="1979"><cite class="bib-title">Zoot Suit</cite><span class="bib-author"> — Valdez, Luis</span><span class="bib-year">, 1979.</span></li>
+    <li data-author="Tobar, Hector" data-year="2014"><cite class="bib-title">The Tattooed Soldier</cite><span class="bib-author"> — Tobar, Hector</span><span class="bib-year">, 2014.</span></li>
+    <li data-author="Olivarez, José" data-year="2017"><cite class="bib-title">Citizen Illegal</cite><span class="bib-author"> — Olivarez, José</span><span class="bib-year">, 2017.</span></li>
+    <li data-author="Castillo, Ana" data-year="1993"><cite class="bib-title">So Far from God</cite><span class="bib-author"> — Castillo, Ana</span><span class="bib-year">, 1993.</span></li>
+    <li data-author="Paredes, Americo" data-year="1930s"><cite class="bib-title">George Washington Gomez: A Mexicotexan Novel</cite><span class="bib-author"> — Paredes, Americo</span><span class="bib-year">, 1930s.</span></li>
+    <li data-author="Paredes, Americo" data-year="1958"><cite class="bib-title">With His Pistol in His Hand</cite><span class="bib-author"> — Paredes, Americo</span><span class="bib-year">, 1958.</span></li>
+    <li data-author="Sequin, Juan" data-year="1858"><cite class="bib-title">A Revolution Remembered</cite><span class="bib-author"> — Sequin, Juan</span><span class="bib-year">, 1858.</span></li>
+    <li data-author="Rivero, Melissa" data-year="2019"><cite class="bib-title">The Affairs of the Falcóns</cite><span class="bib-author"> — Rivero, Melissa</span><span class="bib-year">, 2019.</span></li>
+    <li data-author="Garcia, Cristina" data-year="1992"><cite class="bib-title">Dreaming in Cuban</cite><span class="bib-author"> — Garcia, Cristina</span><span class="bib-year">, 1992.</span></li>
+    <li data-author="Garcia, Gabriela" data-year="2022"><cite class="bib-title">Of Women and Salt</cite><span class="bib-author"> — Garcia, Gabriela</span><span class="bib-year">, 2022.</span></li>
+    <li data-author="Thomas, Piri" data-year="1967"><cite class="bib-title">Down These Mean Streets</cite><span class="bib-author"> — Thomas, Piri</span><span class="bib-year">, 1967.</span></li>
+    <li data-author="Quiñonez, Ernesto" data-year="2000"><cite class="bib-title">Bodega Dreams</cite><span class="bib-author"> — Quiñonez, Ernesto</span><span class="bib-year">, 2000.</span></li>
+    <li data-author="Henríquez, Cristina" data-year="2014"><cite class="bib-title">Book of Unknown American</cite><span class="bib-author"> — Henríquez, Cristina</span><span class="bib-year">, 2014.</span></li>
+    </ul>
+    <script>
+    (function () {
+        const list = document.querySelector('.bib-list');
+        const announcer = document.getElementById('bib-announcer');
+
+        function parseYear(value){
+            if(!value) return Infinity;
+            // extract first number (handles '1930s')
+            const m = value.match(/(\d{4})/);
+            if(m) return parseInt(m[1], 10);
+            const n = parseInt(value, 10);
+            return Number.isFinite(n) ? n : Infinity;
+        }
+
+        function sortList(by, order = 'asc'){
+            const items = Array.from(list.querySelectorAll('li'));
+            items.sort((a,b)=>{
+                if(by === 'author'){
+                    const aa = (a.dataset.author || '').toString();
+                    const bb = (b.dataset.author || '').toString();
+                    return aa.localeCompare(bb, undefined, {sensitivity: 'base'});
+                }
+                if(by === 'year'){
+                    const ay = parseYear(a.dataset.year);
+                    const byy = parseYear(b.dataset.year);
+                    return ay - byy;
+                }
+                return 0;
+            });
+            if(order === 'desc') items.reverse();
+            // re-append in new order
+            items.forEach(i => list.appendChild(i));
+            // Announce
+            if(announcer){
+                const text = by === 'author' ? 'Sorted by author A to Z' : (order === 'desc' ? 'Sorted by year newest first' : 'Sorted by year oldest first');
+                announcer.textContent = text;
+            }
+        }
+
+        document.getElementById('sort-author').addEventListener('click', function(){ sortList('author','asc'); });
+        document.getElementById('sort-year-asc').addEventListener('click', function(){ sortList('year','asc'); });
+        document.getElementById('sort-year-desc').addEventListener('click', function(){ sortList('year','desc'); });
+    })();
+    </script>
 </body>
 </html>
