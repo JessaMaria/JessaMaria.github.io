@@ -14,13 +14,7 @@
         </nav>
     </header>
      <h1>Bibliography</h1>
-    <div class="bib-controls" aria-hidden="false">
-        <label for="bib-sort">Sort bibliography:</label>
-        <button id="sort-author" type="button">Author A–Z</button>
-        <button id="sort-year-asc" type="button">Year ↑</button>
-        <button id="sort-year-desc" type="button">Year ↓</button>
-        <span id="bib-announcer" aria-live="polite" style="margin-left:.6rem;color:#333"></span>
-    </div>
+     
     <ul class="bib-list">
     <li data-author="Ruiz de Burton, Maria Amparo" data-year="1885"><cite class="bib-title">The Squatter and the Don</cite><span class="bib-author"> — Ruiz de Burton, Maria Amparo</span><span class="bib-year">, 1885.</span></li>
     <li data-author="Valdez, Luis" data-year="1979"><cite class="bib-title">Zoot Suit</cite><span class="bib-author"> — Valdez, Luis</span><span class="bib-year">, 1979.</span></li>
@@ -37,49 +31,6 @@
     <li data-author="Quiñonez, Ernesto" data-year="2000"><cite class="bib-title">Bodega Dreams</cite><span class="bib-author"> — Quiñonez, Ernesto</span><span class="bib-year">, 2000.</span></li>
     <li data-author="Henríquez, Cristina" data-year="2014"><cite class="bib-title">Book of Unknown American</cite><span class="bib-author"> — Henríquez, Cristina</span><span class="bib-year">, 2014.</span></li>
     </ul>
-    <script>
-    (function () {
-        const list = document.querySelector('.bib-list');
-        const announcer = document.getElementById('bib-announcer');
 
-        function parseYear(value){
-            if(!value) return Infinity;
-            // extract first number (handles '1930s')
-            const m = value.match(/(\d{4})/);
-            if(m) return parseInt(m[1], 10);
-            const n = parseInt(value, 10);
-            return Number.isFinite(n) ? n : Infinity;
-        }
-
-        function sortList(by, order = 'asc'){
-            const items = Array.from(list.querySelectorAll('li'));
-            items.sort((a,b)=>{
-                if(by === 'author'){
-                    const aa = (a.dataset.author || '').toString();
-                    const bb = (b.dataset.author || '').toString();
-                    return aa.localeCompare(bb, undefined, {sensitivity: 'base'});
-                }
-                if(by === 'year'){
-                    const ay = parseYear(a.dataset.year);
-                    const byy = parseYear(b.dataset.year);
-                    return ay - byy;
-                }
-                return 0;
-            });
-            if(order === 'desc') items.reverse();
-            // re-append in new order
-            items.forEach(i => list.appendChild(i));
-            // Announce
-            if(announcer){
-                const text = by === 'author' ? 'Sorted by author A to Z' : (order === 'desc' ? 'Sorted by year newest first' : 'Sorted by year oldest first');
-                announcer.textContent = text;
-            }
-        }
-
-        document.getElementById('sort-author').addEventListener('click', function(){ sortList('author','asc'); });
-        document.getElementById('sort-year-asc').addEventListener('click', function(){ sortList('year','asc'); });
-        document.getElementById('sort-year-desc').addEventListener('click', function(){ sortList('year','desc'); });
-    })();
-    </script>
 </body>
 </html>
