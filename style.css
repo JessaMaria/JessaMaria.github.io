@@ -29,3 +29,10 @@ figure {
     height: 90vh;
 }
 
+abbr {
+    text-decoration:none; 
+}
+
+abbr:hover {
+    color: blue;
+}
